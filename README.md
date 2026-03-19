@@ -24,8 +24,8 @@ The root directory contains:
 Clone the repo and open the notebook:
 
 ```bash
-git clone <repo-url>
-cd <repo-name>
+git clone https://github.com/lsn235711/congestion-experiments.git
+cd congestion-experiments
 jupyter notebook demo_congestion_experiments.ipynb
 ```
 
