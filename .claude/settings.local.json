@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install:*)",
+      "Bash(pip3 install:*)",
+      "Bash(python3 -c \"from congestion_experiments.variance import confidence_interval; print\\(confidence_interval\\(0.5, 0.1, 1000, 0.1\\)\\)\")"
+    ]
+  }
+}
