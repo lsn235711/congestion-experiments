@@ -13,9 +13,15 @@ The `congestion_experiments/` package contains the core library:
 - `variance.py` — Plug-in variance estimators and confidence interval construction for all three estimators.
 - `__init__.py` — Convenience imports.
 
+The `nonstationary_environment/` folder contains the real-data-driven non-stationary simulator (corresponding to Figures 9-11 of the paper):
+
+- `nonstationary_simulator.py` — Loads half-hourly emergency-department arrival rates from `data0.csv` and exposes a time-varying `lambda_k(k, p, t)` function. The arrival rates are scaled across four simulated weeks with factors (0.9, 1.0, 1.1, 1.2) to create a realistic non-stationary pattern. State-dependent rates follow `2*(2-p)/(1+k)` multiplied by the time-varying base rate.
+- `data0.csv` — Half-hourly arrival rate data for one week (7 days, 336 rows) from the SEEStat database (Technion). See the folder's README for details on the data format and access.
+- `README.md` — Documentation on the data source, CSV format, processing steps, and usage.
+
 The root directory contains:
 
-- `demo_congestion_experiments.ipynb` — A self-contained Jupyter notebook that walks through usage examples, defines illustrative queueing models (zero-deflated M/M/1 and power-law joining), computes true derivatives via numerical differentiation, and runs simulation studies comparing estimators across designs and settings (stationary and non-stationary).
+- `demo_congestion_experiments.ipynb` — A self-contained Jupyter notebook that walks through usage examples, defines illustrative queueing models (zero-deflated M/M/1 and power-law joining), computes true derivatives via numerical differentiation, and runs simulation studies comparing estimators across designs and settings. The non-stationary sections use the real hospital arrival data from `nonstationary_environment/`.
 - `setup.py` — Package installation configuration.
 
 
@@ -29,7 +35,7 @@ cd congestion-experiments
 jupyter notebook demo_congestion_experiments.ipynb
 ```
 
-No installation step is needed — the notebook adds the package to the Python path automatically. The only prerequisites are Python >= 3.9, NumPy, SciPy, and Matplotlib.
+No installation step is needed — the notebook adds the package to the Python path automatically. The only prerequisites are Python >= 3.9, NumPy, SciPy, Matplotlib, pandas, and tqdm.
 
 ## Code generation disclosure
 
